@@ -123,12 +123,8 @@ public class ThemeUtils {
     @ColorInt
     public static int getDialogBackgroundColor() {
         if (Utils.isDarkModeEnabled()) {
-            final int darkColor = getThemeDarkColor();
-            return darkColor == Color.BLACK
-                    // Lighten the background a little if using AMOLED dark theme
-                    // as the dialogs are almost invisible.
-                    ? 0xFF080808 // 3%
-                    : darkColor;
+            // Pure black, whatever the dark theme color of the app is.
+            return Color.BLACK;
         }
 
         return getThemeLightColor();

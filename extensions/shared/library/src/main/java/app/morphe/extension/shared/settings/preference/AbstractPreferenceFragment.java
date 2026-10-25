@@ -267,6 +267,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private static boolean showingUserDialogMessage;
 
     /**
+     * If the restart dialog was already shown after a setting changed,
+     * so changing more settings that do not require a restart does not show it again.
+     */
+    private boolean restartDialogShownAfterChange;
+
+    /**
      * Confirm and restart dialog button text and title.
      * Set by subclasses if Strings cannot be added as a resource.
      */
@@ -312,9 +318,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                             // list/text value was previously set if it needs to be reverted.
                             showSettingUserDialogConfirmation(pref, setting);
                             return;
-                        } else if (setting.rebootApp) {
-                            showRestartDialog(getContext());
                         }
+                        showRestartDialogAfterChange(setting);
                     }
 
                     updatingPreference = true;
@@ -381,9 +386,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     // Update availability of other preferences that may be changed.
                     updateUIAvailability();
 
-                    if (setting.rebootApp) {
-                        showRestartDialog(context);
-                    }
+                    showRestartDialogAfterChange(setting);
                 },
                 () -> {
                     // Cancel button action. Restore whatever the setting was before the change.
@@ -534,6 +537,17 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             // User manually edited import data, or options changed and current selection is no longer available.
             // Still show the value in the summary, so it's clear that something is selected.
             listPreference.setSummary(objectStringValue);
+        }
+    }
+
+    /**
+     * Shows the restart dialog after a setting changed. A setting that requires a restart
+     * always shows it, any other setting only if it was not yet shown since settings opened.
+     */
+    private void showRestartDialogAfterChange(Setting<?> setting) {
+        if (setting.rebootApp || !restartDialogShownAfterChange) {
+            restartDialogShownAfterChange = true;
+            showRestartDialog(getContext());
         }
     }
 
