@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import java.lang.ref.WeakReference;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -275,7 +277,17 @@ public class ThemeColorPatch {
      */
     private static final String SPLASH_THEME_NAME = "morphe_splash_theme_";
 
-    private static boolean splashScreenThemeApplied;
+    /**
+     * The theme last handed to the system, which keeps it for every launch that follows.
+     */
+    private static int splashScreenThemeId;
+
+    /**
+     * The activity the splash screen theme is handed over with, so that it can be handed over
+     * again once the app resolved its theme.
+     */
+    @Nullable
+    private static WeakReference<Activity> splashScreenActivity;
 
     /**
      * If the system gives the app the overlay manager it needs. Resolved with the first context
@@ -483,21 +495,77 @@ public class ThemeColorPatch {
      */
     public static void setSplashScreenTheme(Activity activity) {
         try {
-            if (splashScreenThemeApplied || Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 return;
             }
-            splashScreenThemeApplied = true;
 
-            final int index = splashScreenThemeIndex(isDarkTheme());
-            final int themeId = ResourceUtils.getIdentifier(
-                    ResourceType.STYLE, SPLASH_THEME_NAME + index);
-
-            Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + index
-                    + " id: " + themeId);
-            activity.getSplashScreen().setSplashScreenTheme(themeId);
+            splashScreenActivity = new WeakReference<>(activity);
+            handSplashScreenTheme(activity);
         } catch (Exception ex) {
             Logger.printException(() -> "setSplashScreenTheme failure", ex);
         }
+    }
+
+    /**
+     * Hands the system the theme of the splash screen again after the theme of the app is
+     * resolved or changed.
+     * <p>
+     * The activity is created before the app resolves its theme, and the theme of the last run is
+     * used until then. That is the wrong one if the night mode of the device changed since.
+     */
+    public static void updateSplashScreenTheme() {
+        try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || splashScreenActivity == null) {
+                return;
+            }
+
+            Activity activity = splashScreenActivity.get();
+            if (activity != null && !activity.isDestroyed()) {
+                handSplashScreenTheme(activity);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "updateSplashScreenTheme failure", ex);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    private static void handSplashScreenTheme(Activity activity) {
+        final String themeName = splashScreenThemeName(isDarkTheme());
+        final int themeId = ResourceUtils.getIdentifier(ResourceType.STYLE, themeName);
+        if (themeId == splashScreenThemeId) {
+            return;
+        }
+        splashScreenThemeId = themeId;
+
+        Logger.printDebug(() -> "Splash screen theme: " + themeName + " id: " + themeId);
+        activity.getSplashScreen().setSplashScreenTheme(themeId);
+    }
+
+    /**
+     * The theme that draws the splash screen of the selected colors.
+     * <p>
+     * An app that shows the theme the device does is taken to follow the device, which the app
+     * does by default, and gets a theme that has the color of both themes. The system resolves
+     * it with the night mode of the device, so it is still right after the device changed it.
+     * A theme of a color that has no such theme, or an app that shows the other theme than
+     * the device does, gets the theme of the selected color only.
+     */
+    private static String splashScreenThemeName(boolean dark) {
+        if (!lightColorResourceNames().isEmpty() && dark == isDeviceDarkMode()) {
+            String themeName = SPLASH_THEME_NAME + splashScreenThemeIndex(true)
+                    + "_" + splashScreenThemeIndex(false);
+            if (ResourceUtils.getIdentifier(ResourceType.STYLE, themeName) != 0) {
+                return themeName;
+            }
+        }
+
+        return SPLASH_THEME_NAME + splashScreenThemeIndex(dark);
+    }
+
+    private static boolean isDeviceDarkMode() {
+        final int uiMode = Resources.getSystem().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK;
+        return uiMode == Configuration.UI_MODE_NIGHT_YES;
     }
 
     /**

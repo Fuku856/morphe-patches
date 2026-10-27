@@ -736,42 +736,58 @@ private fun ResourcePatchContext.addSplashScreenThemes(
 ) {
     val themes = StringBuilder()
 
-    fun addTheme(index: Int, color: String) {
-        themes.appendLine("    <style name=\"$SPLASH_THEME_NAME$index\" parent=\"$parentStyle\">")
+    fun addTheme(themes: StringBuilder, name: String, color: String) {
+        themes.appendLine("    <style name=\"$name\" parent=\"$parentStyle\">")
 
         // The first is used since Android 12, and the second by everything the app draws
         // until the splash screen is gone.
         arrayOf(
             "android:windowSplashScreenBackground",
             "android:windowBackground"
-        ).forEach { name ->
-            themes.appendLine("        <item name=\"$name\">$color</item>")
+        ).forEach { itemName ->
+            themes.appendLine("        <item name=\"$itemName\">$color</item>")
         }
 
         themes.appendLine("    </style>")
     }
 
-    fun addThemes(
-        indexOffset: Int,
-        colors: List<ThemeColor>,
-        lLevels: FloatArray,
-        appColor: String?
-    ) {
-        // The system resolves the splash screen with the configuration of the device, where
-        // no variant applies, so the app default needs the color of the app itself.
-        themeColors(indexOffset, colors, lLevels, appColor)
-            .forEach { (index, color) -> addTheme(index, color) }
-    }
-
-    addThemes(
+    // The system resolves the splash screen with the configuration of the device, where
+    // no variant applies, so the app default needs the color of the app itself.
+    val darkColors = themeColors(
         THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_L_LEVELS_DARK,
         appThemeColorDark
     )
+    darkColors.forEach { (index, color) -> addTheme(themes, "$SPLASH_THEME_NAME$index", color) }
+
     if (includeLightColor) {
-        addThemes(
+        val lightColors = themeColors(
             THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_L_LEVELS_LIGHT,
             appThemeColorLight
         )
+        lightColors.forEach { (index, color) -> addTheme(themes, "$SPLASH_THEME_NAME$index", color) }
+
+        // A theme of a single color is the theme of the last run, which is the wrong one the
+        // first time the app starts after the device changed its night mode, and the app follows
+        // the device by default. A theme of both colors is resolved with the night mode the
+        // device has while the system draws the splash screen. Every color of the palette would
+        // need a theme for every other one, so only the colors with a name have one.
+        val nightThemes = StringBuilder()
+        darkColors.filterKeys { it < THEME_INDEX_OFFSET_DARK + PALETTE_INDEX_OFFSET }
+            .forEach { (darkIndex, darkColor) ->
+                lightColors.filterKeys { it < THEME_INDEX_OFFSET_LIGHT + PALETTE_INDEX_OFFSET }
+                    .forEach { (lightIndex, lightColor) ->
+                        val name = "$SPLASH_THEME_NAME${darkIndex}_$lightIndex"
+                        addTheme(themes, name, lightColor)
+                        addTheme(nightThemes, name, darkColor)
+                    }
+            }
+
+        val nightStylesFile = this["res/values-night/styles.xml"]
+        if (!nightStylesFile.exists()) {
+            nightStylesFile.parentFile.mkdirs()
+            nightStylesFile.writeText("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>\n")
+        }
+        nightStylesFile.editText { it.appendResourceElements(nightThemes.toString()) }
     }
 
     this["res/values/styles.xml"].editText { it.appendResourceElements(themes.toString()) }
