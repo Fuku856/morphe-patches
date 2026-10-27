@@ -11,6 +11,8 @@ on:
 jobs:
   push:
     name: Push strings
+    # The Crowdin project and its secrets only exist in the upstream repository.
+    if: github.repository == 'MorpheApp/morphe-patches'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout dev
