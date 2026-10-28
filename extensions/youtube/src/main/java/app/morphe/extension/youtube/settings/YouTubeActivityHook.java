@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
 import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
@@ -171,6 +172,9 @@ public class YouTubeActivityHook extends BaseActivityHook {
             // of the last run picks the background until then. Saved here and not with a context,
             // otherwise a theme change the app never attaches a context after is lost.
             SharedYouTubeSettings.THEME_LAST_USED_DARK_MODE.save(dark);
+
+            // The splash screen theme was handed over with the theme of the last run.
+            ThemeColorPatch.updateSplashScreenTheme();
         }
     }
 

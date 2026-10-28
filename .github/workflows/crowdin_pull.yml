@@ -7,6 +7,8 @@ on:
 jobs:
   pull:
     name: Pull translations from Crowdin
+    # The Crowdin project and its secrets only exist in the upstream repository.
+    if: github.repository == 'MorpheApp/morphe-patches'
     permissions:
       contents: write
     runs-on: ubuntu-latest
