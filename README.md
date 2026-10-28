@@ -24,12 +24,19 @@
 &nbsp;
 
 # 🧩 Patches
-Morphe Patches
+smartlife-patches: Smart Life などのアプリ向けの Morphe パッチ（MorpheApp/morphe-patches がベース）
 
 ## ❓ About
 
 Morphe Patches are based off the prior work of [ReVanced](https://github.com/ReVanced).
 All modifications made by Morphe, along with their dates, can be found in the Git history.
+
+&nbsp;
+## 📲 How to use these patches
+
+Click here to add these patches to Morphe: https://morphe.software/add-source?github=Fuku856/morphe-patches
+
+To use the dev branch releases, enable `pre-release` for this source in Morphe Manager patch sources.
 
 &nbsp;
 ## 🩹 Patches list
