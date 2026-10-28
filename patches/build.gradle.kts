@@ -4,8 +4,8 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
+        name = "smartlife-patches"
+        description = "Smart Life などのアプリ向けの Morphe パッチ（MorpheApp/morphe-patches がベース）"
         source = "git@github.com:MorpheApp/morphe-patches.git"
         author = "MorpheApp"
         contact = "na"
