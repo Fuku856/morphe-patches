@@ -23,10 +23,10 @@
         "preset": "conventionalcommits",
         "presetConfig": {
             "types": [
-                { "type": "fix", "section": "🐛 Bug Fixes", "hidden": false },
-                { "type": "feat", "section": "✨ New Features", "hidden": false },
-                { "type": "bump", "section": "🚀 Updated App Support", "hidden": false },
-                { "type": "perf", "section": "🔧 Improvements",  "hidden": false },
+                { "type": "fix", "section": "🐛 バグ修正", "hidden": false },
+                { "type": "feat", "section": "✨ 新機能", "hidden": false },
+                { "type": "bump", "section": "🚀 対応アプリの更新", "hidden": false },
+                { "type": "perf", "section": "🔧 改善",  "hidden": false },
                 { "type": "build", "hidden": true }
             ]
         }

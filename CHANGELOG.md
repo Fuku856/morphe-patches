@@ -1,19 +1,19 @@
 ## [1.49.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.0...v1.49.1) (2026-10-28)
 
-### 🐛 Bug Fixes
+### 🐛 バグ修正
 
-* **CI:** Release fails after publishing in a private repository ([a4702cd](https://github.com/Fuku856/morphe-patches/commit/a4702cda345ef086dfbdcb8a46b001e8ba9e2950))
+* **CI:** 非公開リポジトリでリリースの公開後に Release が失敗する ([a4702cd](https://github.com/Fuku856/morphe-patches/commit/a4702cda345ef086dfbdcb8a46b001e8ba9e2950))
 
 ## [1.49.0](https://github.com/Fuku856/morphe-patches/compare/v1.48.0...v1.49.0) (2026-10-28)
 
-### 🐛 Bug Fixes
+### 🐛 バグ修正
 
-* **CI:** Skip workflows that need the upstream repository ([2539128](https://github.com/Fuku856/morphe-patches/commit/2539128939c183850b4babb9f5bfcd1fc8e92d8d))
-* **YouTube - Theme:** Splash screen is white in dark mode ([7e2d547](https://github.com/Fuku856/morphe-patches/commit/7e2d54761ae9e535a728a4033fda769f108cbf6f))
+* **CI:** upstream リポジトリが必要なワークフローをスキップする ([2539128](https://github.com/Fuku856/morphe-patches/commit/2539128939c183850b4babb9f5bfcd1fc8e92d8d))
+* **YouTube - Theme:** ダークモードでもスプラッシュ画面が白い ([7e2d547](https://github.com/Fuku856/morphe-patches/commit/7e2d54761ae9e535a728a4033fda769f108cbf6f))
 
-### ✨ New Features
+### ✨ 新機能
 
-* **Settings:** Show restart dialog after a setting is changed, use pure black dialogs in dark mode ([230d97f](https://github.com/Fuku856/morphe-patches/commit/230d97fc6bbb097ce8fe34ad8013d07cbe8d85fe))
+* **Settings:** 設定の変更後に再起動ダイアログを表示し、ダークモードのダイアログを純黒にする ([230d97f](https://github.com/Fuku856/morphe-patches/commit/230d97fc6bbb097ce8fe34ad8013d07cbe8d85fe))
 
 ## [1.48.0](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0...v1.48.0) (2026-10-22)
 
