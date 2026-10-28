@@ -1,9 +1,12 @@
 version: 2
+# Dependencies are updated by merging the upstream repository, which runs its own version updates,
+# so this repository opens no pull requests of its own. Security updates are not affected.
 updates:
   - package-ecosystem: github-actions
     labels: []
     directory: /
     target-branch: dev
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly
 
@@ -11,6 +14,7 @@ updates:
     labels: []
     directory: /
     target-branch: dev
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly
 
@@ -18,9 +22,6 @@ updates:
     labels: []
     directory: /
     target-branch: dev
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly
-    ignore:
-      # 6.2 requires compileSdk 37, and the extensions compile against 36.
-      - dependency-name: org.lsposed.hiddenapibypass:hiddenapibypass
-        versions: [">= 6.2"]
