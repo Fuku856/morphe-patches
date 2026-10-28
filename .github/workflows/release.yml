@@ -20,6 +20,9 @@ jobs:
       id-token: write
       attestations: write
       actions: write
+      # A private repository needs these for the issues and pull requests of a release.
+      issues: write
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
