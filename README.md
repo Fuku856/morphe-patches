@@ -42,7 +42,7 @@ To use the dev branch releases, enable `pre-release` for this source in Morphe M
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.49.1](https://github.com/Fuku856/morphe-patches/releases/tag/v1.49.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;190 patches total
+> **[v1.50.0-dev.1](https://github.com/Fuku856/morphe-patches/releases/tag/v1.50.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;190 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;105 patches</summary>
 <br>

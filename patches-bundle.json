@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-28T03:05:21",
-  "description": "## [1.49.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.0...v1.49.1) (2026-10-28)\n\n### 🐛 Bug Fixes\n\n* **CI:** Release fails after publishing in a private repository ([a4702cd](https://github.com/Fuku856/morphe-patches/commit/a4702cda345ef086dfbdcb8a46b001e8ba9e2950))",
-  "download_url": "https://github.com/Fuku856/morphe-patches/releases/download/v1.49.1/patches-1.49.1.mpp",
+  "created_at": "2026-10-28T05:37:02",
+  "description": "## [1.50.0-dev.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.1...v1.50.0-dev.1) (2026-10-28)\n\n### ✨ 新機能\n\n* パッチ名を smartlife-patches に変更 ([7c026de](https://github.com/Fuku856/morphe-patches/commit/7c026de8331d16003898707a578e73de80dc5c31))",
+  "download_url": "https://github.com/Fuku856/morphe-patches/releases/download/v1.50.0-dev.1/patches-1.50.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.49.1"
+  "version": "1.50.0-dev.1"
 }

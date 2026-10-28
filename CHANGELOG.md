@@ -1,3 +1,9 @@
+## [1.50.0-dev.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.1...v1.50.0-dev.1) (2026-10-28)
+
+### ✨ 新機能
+
+* パッチ名を smartlife-patches に変更 ([7c026de](https://github.com/Fuku856/morphe-patches/commit/7c026de8331d16003898707a578e73de80dc5c31))
+
 ## [1.49.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.0...v1.49.1) (2026-10-28)
 
 ### 🐛 バグ修正
