@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-28T01:48:48",
-  "description": "## [1.49.0](https://github.com/Fuku856/morphe-patches/compare/v1.48.0...v1.49.0) (2026-10-28)\n\n### 🐛 Bug Fixes\n\n* **CI:** Skip workflows that need the upstream repository ([2539128](https://github.com/Fuku856/morphe-patches/commit/2539128939c183850b4babb9f5bfcd1fc8e92d8d))\n* **YouTube - Theme:** Splash screen is white in dark mode ([7e2d547](https://github.com/Fuku856/morphe-patches/commit/7e2d54761ae9e535a728a4033fda769f108cbf6f))\n\n### ✨ New Features\n\n* **Settings:** Show restart dialog after a setting is changed, use pure black dialogs in dark mode ([230d97f](https://github.com/Fuku856/morphe-patches/commit/230d97fc6bbb097ce8fe34ad8013d07cbe8d85fe))",
-  "download_url": "https://github.com/Fuku856/morphe-patches/releases/download/v1.49.0/patches-1.49.0.mpp",
+  "created_at": "2026-10-28T03:05:21",
+  "description": "## [1.49.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.0...v1.49.1) (2026-10-28)\n\n### 🐛 Bug Fixes\n\n* **CI:** Release fails after publishing in a private repository ([a4702cd](https://github.com/Fuku856/morphe-patches/commit/a4702cda345ef086dfbdcb8a46b001e8ba9e2950))",
+  "download_url": "https://github.com/Fuku856/morphe-patches/releases/download/v1.49.1/patches-1.49.1.mpp",
   "signature_download_url": "",
-  "version": "1.49.0"
+  "version": "1.49.1"
 }
