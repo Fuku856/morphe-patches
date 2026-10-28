@@ -1,3 +1,14 @@
+## [1.49.0](https://github.com/Fuku856/morphe-patches/compare/v1.48.0...v1.49.0) (2026-10-28)
+
+### 🐛 Bug Fixes
+
+* **CI:** Skip workflows that need the upstream repository ([2539128](https://github.com/Fuku856/morphe-patches/commit/2539128939c183850b4babb9f5bfcd1fc8e92d8d))
+* **YouTube - Theme:** Splash screen is white in dark mode ([7e2d547](https://github.com/Fuku856/morphe-patches/commit/7e2d54761ae9e535a728a4033fda769f108cbf6f))
+
+### ✨ New Features
+
+* **Settings:** Show restart dialog after a setting is changed, use pure black dialogs in dark mode ([230d97f](https://github.com/Fuku856/morphe-patches/commit/230d97fc6bbb097ce8fe34ad8013d07cbe8d85fe))
+
 ## [1.48.0](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0...v1.48.0) (2026-10-22)
 
 ### 🐛 Bug Fixes
