@@ -32,10 +32,17 @@ Morphe Patches are based off the prior work of [ReVanced](https://github.com/ReV
 All modifications made by Morphe, along with their dates, can be found in the Git history.
 
 &nbsp;
+## 📲 How to use these patches
+
+Click here to add these patches to Morphe: https://morphe.software/add-source?github=Fuku856/morphe-patches
+
+To use the dev branch releases, enable `pre-release` for this source in Morphe Manager patch sources.
+
+&nbsp;
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.49.1](https://github.com/Fuku856/morphe-patches/releases/tag/v1.49.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;190 patches total
+> **[v1.50.0-dev.2](https://github.com/Fuku856/morphe-patches/releases/tag/v1.50.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;190 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;105 patches</summary>
 <br>
