@@ -1,3 +1,9 @@
+## [1.50.0-dev.2](https://github.com/Fuku856/morphe-patches/compare/v1.50.0-dev.1...v1.50.0-dev.2) (2026-10-29)
+
+### 🐛 バグ修正
+
+* パッチ名を Morphe Patches に戻す ([5fda5b3](https://github.com/Fuku856/morphe-patches/commit/5fda5b3c2af3eac9202abb58b87afd9e186e18df))
+
 ## [1.50.0-dev.1](https://github.com/Fuku856/morphe-patches/compare/v1.49.1...v1.50.0-dev.1) (2026-10-28)
 
 ### ✨ 新機能
