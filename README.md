@@ -24,7 +24,7 @@
 &nbsp;
 
 # 🧩 Patches
-smartlife-patches: Smart Life などのアプリ向けの Morphe パッチ（MorpheApp/morphe-patches がベース）
+Morphe Patches
 
 ## ❓ About
 
